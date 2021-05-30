@@ -13,14 +13,14 @@ License -> https://github.com/FayasNoushad/YouTube-Downloader/blob/main/LICENSE
 
 ### Deploy 
 
-Deploy on Heroku
+<b>Deploy on Heroku</b>
 <p align="left">
   <a href="https://heroku.com/deploy?template=https://github.com/FayasNoushad/YouTube-Downloader">
      <img height="30px" src="https://img.shields.io/badge/Deploy%20To%20Heroku-blueviolet?style=for-the-badge&logo=heroku">
   </a>
 </p>
 
-Deploy in your vps
+<b>Deploy in your vps</b>
 ```
 git clone https://github.com/FayasNoushad/YouTube-Downloader
 cd YouTube-Downloader
