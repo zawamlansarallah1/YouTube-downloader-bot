@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# (C) Shrimadhav U K
+
 import os
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
