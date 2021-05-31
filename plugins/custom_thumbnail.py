@@ -1,17 +1,12 @@
 import os
-
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
 else:
     from config import Config
-
-from pyrogram import Client, filters    
-
+from pyrogram import Client, filters
 from translation import Translation
-
 import database.database as sql
 from database.database import *
-
 
 @Client.on_message(filters.private & filters.photo)
 async def save_photo(bot, update):
@@ -40,7 +35,6 @@ async def save_photo(bot, update):
             reply_to_message_id=update.message_id
         )
 
-
 @Client.on_message(filters.private & filters.command(["delthumb"]))
 async def delete_thumbnail(bot, update):
     thumb_image_path = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
@@ -51,14 +45,11 @@ async def delete_thumbnail(bot, update):
         #os.remove(download_location + ".json")
     except:
         pass
-
     await bot.send_message(
         chat_id=update.chat.id,
         text ="**✅ Custom Thumbnail cleared succesfully**",
         reply_to_message_id=update.message_id
     )
-
-
 
 @Client.on_message(filters.private & filters.command(["showthumb"]))
 async def show_thumb(bot, update):
@@ -70,8 +61,7 @@ async def show_thumb(bot, update):
             await m.download(file_name=thumb_image_path)
             thumb_image_path = thumb_image_path
         else:
-            thumb_image_path = None    
-    
+            thumb_image_path = None
     if thumb_image_path is not None:
         try:
             await bot.send_photo(
@@ -80,7 +70,6 @@ async def show_thumb(bot, update):
             )
         except:
             pass
-        
     elif thumb_image_path is None:
         await bot.send_message(
             chat_id=update.chat.id,
