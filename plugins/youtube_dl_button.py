@@ -214,10 +214,13 @@ async def youtube_dl_call_back(bot, update):
                     if metadata.has("duration"):
                         duration = metadata.get('duration').seconds
 
-            if os.path.exists(thumb_image_path):
+            if os.path.exists(thumb_image_path) or Config.DEF_THUMB_NAIL_VID_S:
                 width = 0
                 height = 0
-                metadata = extractMetadata(createParser(thumb_image_path))
+                if os.path.exists(thumb_image_path):
+                    metadata = extractMetadata(createParser(thumb_image_path))
+                else:
+                    metadata = Config.DEF_THUMB_NAIL_VID_S
                 if metadata.has("width"):
                     width = metadata.get("width")
                 if metadata.has("height"):
